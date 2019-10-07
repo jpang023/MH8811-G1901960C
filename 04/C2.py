@@ -29,7 +29,7 @@ def my_median(num_list):
     r = int(len(num_list)/2)
     if (len(num_list) % 2) == 0:
         #even
-        return (num_list[r] +num_list[r+1])/2
+        return (num_list[r] +num_list[r-1])/2
     else:
         #odd
         return num_list[r]
