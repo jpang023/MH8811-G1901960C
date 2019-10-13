@@ -96,9 +96,7 @@ def deserialize(input_str):
                     item[1] = transdatatype(item[1])
                     res[item[0]] = item[1]
             else:
-                print(input_str)
                 input_str = input_str.split(':')
-                print(input_str)   
                 input_str[1] = transdatatype(input_str[1])
                 res[input_str[0]] = input_str[1]
             return res
@@ -135,36 +133,38 @@ try:
     json_file = open(json_path)
     json_data = json.load(json_file) 
     json_file.close()
-except:
-    print("Wrong file path")
 #type(json_data)
 #print(json_data)
 
 #Use your serializer to convert the original data structure into a string
-try:
     str_data= serialize(json_data)
-except:
-      print("Wrong JSON data format.")
+
 #print(str_data)
 
 #Write the string to a file (ask user for a file name for that too). Don't forget to close the file.
-myfile_path=input("Please type in file name to save:")
+    myfile_path=input("Please type in file name to save:")
 #myfile_path="output.txt"
-try:
     my_file = open(myfile_path , 'w')  
     my_file.write(str_data)
     my_file.close()
-except:
-      print("Wrong file path")
+
 #Read the string back from the file. Close the file afterwards.
-same_file = open(myfile_path)
-my_str= same_file.read()
+    same_file = open(myfile_path)
+    my_str= same_file.read()
+    same_file.close()
 #print(my_str)
 
 #Pass it to your deserialization function, which would return a restored data structure
-new_data = deserialize(my_str)
+    new_data = deserialize(my_str)
 #print(new_data)
 
 #Compare the two data structures
-data_compare(json_data,new_data)
+    data_compare(json_data,new_data)
+except OSError:
+    print("Wrong file path")
+except ValueError:
+    print("Wrong JSON data")
+    json_file.close()
+    
+    
         
