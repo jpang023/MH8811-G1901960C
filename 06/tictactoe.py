@@ -12,16 +12,16 @@ def TicTacDraw(board):
         jcount = 0
         for j in i:
             if j == 0:
-                row = row + "0"
+                row = row + " 0 "
             elif j == 1:
-                row = row + "X"
+                row = row + " X "
             elif j == 2:
-                row = row + " "
+                row = row + "   "
             jcount = jcount +1
             if jcount < len(i):
                 row = row + "|"
         print(row)
         icount = icount +1
         if icount != len(board):
-            print("-"*(len(board)*2 -1))
+            print("-"*(len(board)*3+len(board)-1))
 #TicTacDraw([[0,1,2,0],[2,0,0,1],[1,1,2,0],[2,1,2,0]])
